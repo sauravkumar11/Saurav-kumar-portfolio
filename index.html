@@ -14,7 +14,7 @@
 
   <!-- Meta Tags for SEO -->
   <meta name="description"
-    content="Saurav Kumar's portfolio showcasing expertise in front-end development, React, React-Redux, JavaScript, and graphic design. Currently working at L&T Technology Services.">
+    content="Saurav Kumar's portfolio showcasing expertise in front-end development, React, React-Redux, JavaScript, and graphic design. Currently working at L&T Technology Services and pursuing B.Tech in Artificial Intelligence and Machine Learning.">
   <meta name="keywords"
     content="Saurav Kumar, Saurav Kumar LTTS, Saurav Kumar L&T Technology Services, Saurav Kumar Portfolio, letscode, letscode_11, sauravkumar_11, sauravsinghrajput, front-end developer, React developer, graphic designer, web development, mobile apps, graphic design, photography">
   <meta name="author" content="Saurav Kumar">
@@ -22,7 +22,7 @@
   <!-- Open Graph Meta Tags for Social Sharing -->
   <meta property="og:title" content="Saurav Kumar - Front-end Developer Portfolio">
   <meta property="og:description"
-    content="Explore Saurav Kumar's portfolio featuring projects in React, JavaScript, and graphic design. Currently a Front-end Developer at L&T Technology Services.">
+    content="Explore Saurav Kumar's portfolio showcasing expertise in front-end development, React, React-Redux, JavaScript, and graphic design. Currently working at L&T Technology Services and pursuing B.Tech in Artificial Intelligence and Machine Learning.">
   <meta property="og:image" content="./assets/images/my-avatar.png">
   <meta property="og:url" content="https://portfolio-saurav-kumar11.netlify.app/">
   <meta property="og:type" content="website">
@@ -191,11 +191,32 @@
           </li>
 
           <li class="social-item">
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://your-portfolio-link.com"
-              class="social-link" target="_blank" aria-label="Share Portfolio">
+            <a href="javascript:void(0);" class="social-link" aria-label="Share Portfolio"
+              onclick="toggleSharePopup(event)">
               <ion-icon name="share-social-outline"></ion-icon>
             </a>
           </li>
+          <!-- Share Popup Modal -->
+          <!-- Share Popup Modal -->
+          <div id="share-overlay"
+            style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0, 0, 0, 0.495); z-index:9999;">
+          </div>
+          <div id="share-popup" class="share-popup">
+            <a href="https://wa.me/?text=https://sauravkumar11.netlify.app/" target="_blank">WhatsApp</a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://sauravkumar11.netlify.app/"
+              target="_blank">Facebook</a>
+            <a href="https://twitter.com/intent/tweet?url=https://sauravkumar11.netlify.app/"
+              target="_blank">Twitter</a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sauravkumar11.netlify.app/"
+              target="_blank">LinkedIn</a>
+            <a href="https://t.me/share/url?url=https://sauravkumar11.netlify.app/" target="_blank">Telegram</a>
+            <a href="https://www.reddit.com/submit?url=https://sauravkumar11.netlify.app/" target="_blank">Reddit</a>
+            <a href="https://pinterest.com/pin/create/button/?url=https://sauravkumar11.netlify.app/"
+              target="_blank">Pinterest</a>
+            <a href="https://www.instagram.com/letscode_11/" target="_blank">Instagram</a> <a href="#"
+              onclick="copyLink(event)">Copy Link</a>
+            <button onclick="closeSharePopup()" style="margin: auto;padding: 5px 40px;">Close</button>
+          </div>
 
         </ul>
 
@@ -393,7 +414,7 @@
                   <img src="./assets/images/avatar-2.png" alt="Aishwarya" width="60" data-testimonials-avatar>
                 </figure>
 
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Aishwarya</h4>
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Priya</h4>
 
                 <div class="testimonials-text" data-testimonials-text>
                   <p>
@@ -413,7 +434,7 @@
                   <img src="./assets/images/avatar-3.png" alt="Priyanka Rani" width="60" data-testimonials-avatar>
                 </figure>
 
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Priyanka Rani</h4>
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Isha Rathore</h4>
 
                 <div class="testimonials-text" data-testimonials-text>
                   <p>
@@ -497,52 +518,48 @@
         <!--
           - clients
         -->
+        <!-- GitHub Profile Card START -->
+        <section class="github-profile">
+          <h3 class="h3 clients-title">GitHub Profile</h3>
+          <div class="github-card" id="github-card">
+            <a href="https://github.com/sauravkumar11" target="_blank" class="github-link">
+              <img src="https://github.com/sauravkumar11.png" alt="GitHub Avatar" class="github-avatar" width="60"
+                height="60">
+              <div class="github-info">
+                <span class="github-username">@sauravkumar11</span>
+                <div class="github-stats-row">
+                  <span class="github-followers">Followers: <span id="github-followers">...</span></span>
+                  <span class="github-repos">Repositories: <span id="github-repos">...</span></span>
+                </div>
+                <a href="https://github.com/sauravkumar11" target="_blank" class="github-follow-btn">Follow</a>
+              </div>
+              <div class="github-repo-list" id="github-repo-list">
+                <!-- Repos will be loaded here -->
+              </div>
+        </section>
+        <!-- GitHub Profile Card END -->
 
-        <!-- <section class="clients">
+        <script>
+          fetch('https://api.github.com/users/sauravkumar11')
+            .then(response => response.json())
+            .then(data => {
+              document.getElementById('github-followers').textContent = data.followers;
+              document.getElementById('github-repos').textContent = data.public_repos;
+            });
 
-          <h3 class="h3 clients-title">Play Games</h3>
+          fetch('https://api.github.com/users/sauravkumar11/repos')
+            .then(response => response.json())
+            .then(repos => {
+              const repoList = document.getElementById('github-repo-list');
+              repoList.innerHTML = repos.map(repo => `
+      <div class="github-repo-card">
+        <a href="${repo.html_url}" target="_blank" class="github-repo-title">${repo.name}</a>
+        <p class="github-repo-desc">${repo.description ? repo.description : 'No description'}</p>
+      </div>
+    `).join('');
+            });
+        </script>
 
-          <ul class="clients-list has-scrollbar">
-
-            <li class="clients-item">
-              <a href="https://playtictacnow.netlify.app/" target="_blank">
-                <img src="./tic-tac-toe-logo.png" alt="Tic Tac Toe logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-2-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-3-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-4-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-5-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-6-color.png" alt="client logo">
-              </a>
-            </li>
-
-          </ul>
-
-        </section> -->
 
       </article>
 
@@ -1230,6 +1247,29 @@
     - custom js link
   -->
   <script src="script.js"></script>
+  <script>
+    function toggleSharePopup(event) {
+      event.stopPropagation();
+      document.getElementById('share-popup').style.display = 'block';
+      document.getElementById('share-overlay').style.display = 'block';
+    }
+
+    function closeSharePopup() {
+      document.getElementById('share-popup').style.display = 'none';
+      document.getElementById('share-overlay').style.display = 'none';
+    }
+
+    // Hide popup when clicking outside
+    document.getElementById('share-overlay').onclick = closeSharePopup;
+
+    function copyLink(event) {
+      event.preventDefault();
+      const url = 'https://sauravkumar11.netlify.app/';
+      navigator.clipboard.writeText(url).then(function () {
+        alert('Link copied to clipboard!');
+      });
+    }
+  </script>
 
   <!--
     - ionicon link

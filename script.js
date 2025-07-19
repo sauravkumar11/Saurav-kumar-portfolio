@@ -157,3 +157,17 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+function toggleSharePopup(event) {
+  event.stopPropagation();
+  document.getElementById('share-popup').style.display = 'block';
+  document.getElementById('share-overlay').style.display = 'block';
+}
+
+function closeSharePopup() {
+  document.getElementById('share-popup').style.display = 'none';
+  document.getElementById('share-overlay').style.display = 'none';
+}
+
+// Hide popup when clicking outside
+document.getElementById('share-overlay').onclick = closeSharePopup;

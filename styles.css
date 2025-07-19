@@ -1,20 +1,3 @@
-/*-----------------------------------*\
-  #style.css
-\*-----------------------------------*/
-
-
-/**
- * copyright 2022 @codewithsadee
- */
-
-
-
-
-
-/*-----------------------------------*\
-  #CUSTOM PROPERTY
-\*-----------------------------------*/
-
 :root {
 
     /**
@@ -1981,3 +1964,152 @@
     .timeline-text { max-width: 700px; }
   
   }
+  
+  /* Add this to your styles.css */
+.share-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--eerie-black-2);
+  border: 1.5px solid var(--jet);
+  border-radius: 20px;
+  padding: 24px 28px;
+  z-index: 9999;
+  min-width: 220px;
+  box-shadow: var(--shadow-1);
+  text-align: center;
+  color: var(--light-gray);
+  font-family: var(--ff-poppins);
+}
+.share-popup a {
+  display: block;
+  margin: 10px 0;
+  color: var(--light-gray);
+  text-decoration: none;
+  font-size: var(--fs-6);
+  transition: color 0.2s;
+}
+.share-popup a:hover {
+  color: var(--orange-yellow-crayola);
+}
+.share-popup button {
+  margin-top: 16px;
+  padding: 6px 18px;
+  border: none;
+  border-radius: 8px;
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+  cursor: pointer;
+  font-family: var(--ff-poppins);
+  font-size: var(--fs-6);
+}
+
+/* Show share popup only on screens smaller than 1024px */
+@media (min-width: 1024px) {
+  #share-popup,
+  #share-overlay {
+    display: none !important;
+  }
+}
+
+.github-card {
+  background: var(--eerie-black-2);
+  border: 1.5px solid var(--jet);
+  border-radius: 16px;
+  box-shadow: var(--shadow-1);
+  padding: 16px 18px;
+  margin: 18px 0;
+  display: flex;
+  align-items: center;
+  font-family: var(--ff-poppins);
+  color: var(--light-gray);
+  transition: box-shadow 0.2s;
+}
+.github-card:hover {
+  box-shadow: var(--shadow-2);
+}
+.github-link {
+  /* display: flex; */
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+.github-avatar {
+  border-radius: 50%;
+  border: 2px solid var(--orange-yellow-crayola);
+  margin-right: 14px;
+}
+/* GitHub card info alignment fix */
+.github-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.github-username {
+  font-weight: var(--fw-500);
+  font-size: var(--fs-5);
+  color: var(--orange-yellow-crayola);
+  margin-bottom: 4px;
+}
+
+.github-stats-row {
+  display: inline;
+  gap: 18px;
+  margin: 4px;
+}
+
+.github-followers,
+.github-repos {
+  font-size: var(--fs-6);
+  color: var(--light-gray);
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+.github-follow-btn {
+  margin-top: 8px;
+  padding: 6px 18px;
+  border: none;
+  border-radius: 8px;
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+  cursor: pointer;
+  font-family: var(--ff-poppins);
+  font-size: var(--fs-6);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: var(--fw-500);
+}
+.github-repo-list {
+  margin-top: 18px;
+}
+.github-repo-card {
+  background: var(--eerie-black-2);
+  border: 1px solid var(--jet);
+  border-radius: 12px;
+  box-shadow: var(--shadow-1);
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+.github-repo-title {
+  color: var(--orange-yellow-crayola);
+  font-weight: var(--fw-500);
+  font-size: var(--fs-6);
+  text-decoration: none;
+}
+.github-repo-title:hover {
+  text-decoration: underline;
+}
+.github-repo-desc {
+  color: var(--light-gray);
+  font-size: var(--fs-7);
+  margin-top: 4px;
+}
