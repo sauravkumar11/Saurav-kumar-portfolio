@@ -2070,6 +2070,7 @@
   margin: 0;
   padding: 0;
   display: inline-block;
+  text-align: center;
 }
 
 .github-follow-btn {
